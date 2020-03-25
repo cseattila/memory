@@ -9,9 +9,23 @@ var leir= document.getElementById("myleir");
 
 myLeirasok = {
   "leiras": {
-    "14":"Ford",
-    "1":"1Ford",
-    "2":"2Ford",
+
+
+"1":"Asztal </br> Apátfalva, 1912",
+"2":"Hordókulacs</br> Apátfalva,19. sz. vége",
+"3":"Tintatartó</br> Makó, 19. század",
+"4":"	Gondolkodószék</br>Apátfalva, 19. sz. közepe/ 20. sz. eleje",
+"5":"	Vállkendő<br>Magyarcsanád, 20. sz. eleje",
+"6":"	Menyasszonyi láda<br>Makó, 1846",
+"7":"	Csörögéstál<br>Hódmezővásárhely, 1847",
+"8":"	Menyasszonyi láda <br>Makó, 1812",
+"9":"	Gondolkodószék<br>Makó, 1873",
+"10":"	Mellény <br>Csanádalberti, 20. sz. közepe",
+"11":"	Törülköző <br>Apátfalva, 19. sz. vége",
+"12":"	Főkötő és gallér<br>Magyarcsanád, 19. sz. vége",
+"13":"	Kulacs<br>Makó, 19. sz.",
+"14":"Menyasszonyi láda <br>Makó, 1813"
+
   }
  }
 
