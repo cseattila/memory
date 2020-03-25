@@ -6,6 +6,15 @@ var span = document.getElementsByClassName("close")[0];
 
 var leir= document.getElementById("myleir");
 
+
+myLeirasok = {
+  "leiras": {
+    "14":"Ford",
+    "1":"1Ford",
+    "2":"2Ford",
+  }
+ }
+
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
@@ -39,7 +48,8 @@ function checkForMatch() {
 function disableCards() {
   firstCard.removeEventListener('click', flipCard);
   secondCard.removeEventListener('click', flipCard);
- modal.style.display = "block";
+  modal.style.display = "block";
+  leir.innerHTML =myLeirasok. leiras[firstCard.dataset.framework];
   resetBoard();
 }
 
