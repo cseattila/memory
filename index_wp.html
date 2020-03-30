@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Memory Game</title>
+
+<style>
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+/*  display: flex;*/
+  background: #fffffe;
+ 
+}
+
+header {
+ background-color: hsla(0, 0%, 97%, 0);
+  padding: 15px;
+  text-align: center;
+  font-size: 35px;
+  color: white;  
+}
+
+header  img {
+height: 260px;
+  display: inline-block;
+}
+
+section:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+.memory-game {
+  width: 1280px;
+  height: 640px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+
+.memory-card {
+  width: calc(14.2% - 10px);
+  height: calc(33.333% - 10px);
+  margin: 5px;
+  position: relative;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform .5s;
+  box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+}
+
+.memory-card:active {
+  transform: scale(0.97);
+  transition: transform .2s;
+}
+
+.memory-card.flip {
+  transform: rotateY(180deg);
+}
+
+.front-face,
+.back-face {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  position: absolute;
+  border-radius: 5px;
+  background: #1C7CCC;
+  backface-visibility: hidden;
+}
+
+.front-face {
+  transform: rotateY(180deg);
+}
+
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 250pt; /* Could be more or less, depending on screen size */
+ border-radius: 5px;
+text-align:center;
+}
+
+.messageDlg {
+
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+
+ <header >
+<h1>
+<img src="szoveg.jpg" alt="szoveg" />
+</h1>
+      <img src="hatterkep.jpg" alt="hatterkep" />
+ </header>
+
+
+  <section class="memory-game">
+
+    <div class="memory-card" data-framework="1">
+      <img class="front-face" src="1.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="?" />
+    </div>
+    <div class="memory-card" data-framework="1">
+      <img class="front-face" src="1.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="?" />
+    </div>
+<div class="memory-card" data-framework="2">
+      <img class="front-face" src="2.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="JS Badge" />
+    </div>
+    <div class="memory-card" data-framework="2">
+      <img class="front-face" src="2.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="JS Badge" />
+    </div>
+<div class="memory-card" data-framework="3">
+      <img class="front-face" src="3.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="JS Badge" />
+    </div>
+    <div class="memory-card" data-framework="3">
+      <img class="front-face" src="3.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="JS Badge" />
+    </div>
+<div class="memory-card" data-framework="4">
+      <img class="front-face" src="4.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="JS Badge" />
+    </div>
+    <div class="memory-card" data-framework="4">
+      <img class="front-face" src="4.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="JS Badge" />
+    </div>
+<div class="memory-card" data-framework="5">
+      <img class="front-face" src="5.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="JS Badge" />
+    </div>
+    <div class="memory-card" data-framework="5">
+      <img class="front-face" src="5.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="JS Badge" />
+    </div>
+<div class="memory-card" data-framework="6">
+      <img class="front-face" src="6.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="JS Badge" />
+    </div>
+    <div class="memory-card" data-framework="6">
+      <img class="front-face" src="6.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="JS Badge" />
+    </div>
+<div class="memory-card" data-framework="7">
+      <img class="front-face" src="7.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="JS Badge" />
+    </div>
+    <div class="memory-card" data-framework="7">
+      <img class="front-face" src="7.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="JS Badge" />
+    </div>
+<div class="memory-card" data-framework="8">
+      <img class="front-face" src="8.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="JS Badge" />
+    </div>
+    <div class="memory-card" data-framework="8">
+      <img class="front-face" src="8.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="JS Badge" />
+    </div>
+<div class="memory-card" data-framework="9">
+      <img class="front-face" src="9.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="JS Badge" />
+    </div>
+    <div class="memory-card" data-framework="9">
+      <img class="front-face" src="9.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="JS Badge" />
+    </div>
+<div class="memory-card" data-framework="10">
+      <img class="front-face" src="10.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="JS Badge" />
+    </div>
+    <div class="memory-card" data-framework="10">
+      <img class="front-face" src="10.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="JS Badge" />
+    </div>
+<div class="memory-card" data-framework="11">
+      <img class="front-face" src="11.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="JS Badge" />
+    </div>
+    <div class="memory-card" data-framework="11">
+      <img class="front-face" src="11.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="JS Badge" />
+    </div>
+<div class="memory-card" data-framework="12">
+      <img class="front-face" src="12.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="JS Badge" />
+    </div>
+    <div class="memory-card" data-framework="12">
+      <img class="front-face" src="12.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="JS Badge" />
+    </div>
+<div class="memory-card" data-framework="13">
+      <img class="front-face" src="13.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="JS Badge" />
+    </div>
+    <div class="memory-card" data-framework="13">
+      <img class="front-face" src="13.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="JS Badge" />
+    </div>
+<div class="memory-card" data-framework="14">
+      <img class="front-face" src="14.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="JS Badge" />
+    </div>
+    <div class="memory-card" data-framework="14">
+      <img class="front-face" src="14.jpg" alt="Aurelia" />
+      <img class="back-face" src="jam.png" alt="JS Badge" />
+    </div>
+
+
+
+ 
+  </section>
+<div id="myModal" class="modal">
+<div class="modal-content">
+    <span class="close">&times;</span>
+    <p  id="myleir" >Some text in the Modal..</p>
+  </div>
+</div>
+  <script >
+  const cards = document.querySelectorAll('.memory-card');
+// Get the modal
+var modal = document.getElementById("myModal");
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+var leir= document.getElementById("myleir");
+
+
+myLeirasok = {
+  "leiras": {
+
+
+"1":"Asztal </br> Apátfalva, 1912",
+"2":"Hordókulacs</br> Apátfalva,19. sz. vége",
+"3":"Tintatartó</br> Makó, 19. század",
+"4":"	Gondolkodószék</br>Apátfalva, 19. sz. közepe/ 20. sz. eleje",
+"5":"	Vállkendő<br>Magyarcsanád, 20. sz. eleje",
+"6":"	Menyasszonyi láda<br>Makó, 1846",
+"7":"	Csörögéstál<br>Hódmezővásárhely, 1847",
+"8":"	Menyasszonyi láda <br>Makó, 1812",
+"9":"	Gondolkodószék<br>Makó, 1873",
+"10":"	Mellény <br>Csanádalberti, 20. sz. közepe",
+"11":"	Törülköző <br>Apátfalva, 19. sz. vége",
+"12":"	Főkötő és gallér<br>Magyarcsanád, 19. sz. vége",
+"13":"	Kulacs<br>Makó, 19. sz.",
+"14":"Menyasszonyi láda <br>Makó, 1813"
+
+  }
+ }
+
+let hasFlippedCard = false;
+let lockBoard = false;
+let firstCard, secondCard;
+
+function flipCard() {
+  if (lockBoard) return;
+  if (this === firstCard) return;
+
+  this.classList.add('flip');
+
+  if (!hasFlippedCard) {
+    // first click
+    hasFlippedCard = true;
+    firstCard = this;
+
+    return;
+  }
+
+  // second click
+  secondCard = this;
+
+  checkForMatch();
+}
+
+function checkForMatch() {
+  let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
+
+  isMatch ? disableCards() : unflipCards();
+}
+
+function disableCards() {
+  firstCard.removeEventListener('click', flipCard);
+  secondCard.removeEventListener('click', flipCard);
+  modal.style.display = "block";
+  leir.innerHTML =myLeirasok. leiras[firstCard.dataset.framework];
+  resetBoard();
+}
+
+function unflipCards() {
+  lockBoard = true;
+
+  setTimeout(() => {
+    firstCard.classList.remove('flip');
+    secondCard.classList.remove('flip');
+
+    resetBoard();
+  }, 1500);
+ 
+}
+
+function resetBoard() {
+  [hasFlippedCard, lockBoard] = [false, false];
+  [firstCard, secondCard] = [null, null];
+}
+
+(function shuffle() {
+  cards.forEach(card => {
+    let randomPos = Math.floor(Math.random() * 12);
+    card.style.order = randomPos;
+  });
+})();
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+cards.forEach(card => card.addEventListener('click', flipCard));
+
+  </script>
+</body>
+</html>
