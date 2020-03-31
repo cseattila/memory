@@ -1,4 +1,4 @@
 # memory
-Egy memoria jatek
+Memória játék
 
-Megtalálható a www.csengeri.ml/jatek oldalon. 
+Megtalálható a http://www.muzeum.mako.hu/wp-content/uploads/2020/03/index_wp.html oldalon. 
